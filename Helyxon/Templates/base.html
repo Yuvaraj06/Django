@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <h1>Helyxon Registrationsite</h1>
+        <a href="{% url 'home' %}">Home</a> /
+    {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}">Log out</a>
+        <a href="{% url 'password_change' %}">Password Change</a> /
+        <strong> You are Logged in as {{ user.username }}</strong>
+    {% else %}
+        <a href="{% url 'signup' %}">Signup</a> /
+        <a href="{% url 'login' %}">Log in</a>
+    {% endif %}
+    <hr>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
